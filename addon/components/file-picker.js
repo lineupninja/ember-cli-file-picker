@@ -1,20 +1,12 @@
-import Ember from 'ember';
 import { readFile } from '../lib/helpers';
+import { computed, observer } from '@ember/object';
+import { run } from '@ember/runloop';
+import Component from '@ember/component';
+import { isEmpty } from '@ember/utils';
+import { htmlSafe } from '@ember/template';
+import $ from 'jquery';
 
-const {
-  Component,
-  computed,
-  observer,
-  run: {
-    bind
-  },
-  String: {
-    htmlSafe
-  },
-  isEmpty,
-  $
-} = Ember;
-
+const bind = run.bind;
 
 export default Component.extend({
   classNames: ['file-picker'],
@@ -244,7 +236,7 @@ export default Component.extend({
    * uses test from Modernizr
    * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/elem/progress-meter.js
    */
-  isProgressSupported: Ember.computed(function() {
+  isProgressSupported: computed(function() {
     return document.createElement('progress').max !== undefined;
   })
 });

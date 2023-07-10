@@ -1,8 +1,4 @@
-import Ember from 'ember';
-
-const {
-  assert
-} = Ember;
+import { assert } from '@ember/debug';
 
 /**
  * Reads a file
@@ -22,7 +18,7 @@ function readFile(file, readAs, progressCallback = null) {
     'readAs method "' + readAs + '" not implemented', (reader[readAs] && readAs !== 'abort')
   );
 
-  return new Ember.RSVP.Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     reader.onload = function(event) {
       resolve({
         // TODO deprecate filename
